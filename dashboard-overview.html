@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Overview - PreDeployCostGuard</title>
+    <link rel="stylesheet" href="styles-dashboard.css">
+    <!-- Include any additional CSS files as needed -->
+</head>
+<body>
+<nav class="menu-container">
+    <ul class="menu">
+        <li>
+            <a href="#">Dashboard</a>
+            <ul class="submenu">
+                <li><a href="dashboard-overview.html">Dashboard Overview</a></li>
+                <li><a href="dashboard-reports.html">Reports</a></li>
+                <!-- Add more submenu items for Dashboard as needed -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">Cost Estimator</a>
+            <ul class="submenu">
+                <li><a href="cost-ec2.html">EC2 Instances</a></li>
+                <li><a href="cost-s3.html">S3 Storage</a></li>
+                <!-- Add more submenu items for Cost Estimator as needed -->
+            </ul>
+        </li>
+        <!-- Add more main menu items as needed -->
+    </ul>
+</nav>
+
+<main>
+    <section id="dashboard">
+        <h2>Dashboard Overview</h2>
+        <div class="dashboard-content">
+            <div class="summary">
+                <h3>Summary</h3>
+                <p>Welcome to the Dashboard Overview page of PreDeployCostGuard.</p>
+                <p>This section provides a summary of your deployment costs and resources.</p>
+            </div>
+
+            <div class="charts">
+                <h3>Cost Analysis Charts</h3>
+                <div class="chart-container">
+                    <canvas id="costChart" width="400" height="200"></canvas>
+                </div>
+                <p>Charts illustrating cost trends and breakdowns.</p>
+            </div>
+
+            <div class="metrics">
+                <h3>Key Metrics</h3>
+                <ul>
+                    <li>Current AWS Usage</li>
+                    <li>Projected Costs</li>
+                    <li>Resource Allocation</li>
+                </ul>
+                <p>Important metrics and insights for your deployment.</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script> <!-- Include your JavaScript file for interactive elements -->
+</body>
+</html>

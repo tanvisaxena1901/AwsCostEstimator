@@ -1,0 +1,227 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-container {
+    background-color: #333;
+    color: white;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 20px;
+    margin: 0;
+}
+
+.menu > li {
+    margin-bottom: 10px;
+}
+
+.menu > li > a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.menu > li > a:hover {
+    background-color: #555;
+}
+
+.submenu {
+    display: none;
+    background-color: #555;
+    padding: 10px;
+}
+
+.menu > li:hover .submenu {
+    display: block;
+}
+
+.submenu > li {
+    margin-bottom: 5px;
+}
+
+.submenu > li > a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.submenu > li > a:hover {
+    background-color: #777;
+}
+
+/* Main content styling */
+main {
+    margin-left: 270px; /* Adjust according to menu width */
+    padding: 20px;
+}
+
+main section {
+    margin-bottom: 40px;
+}
+
+main h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+main p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Dashboard reports content */
+#dashboard-reports .report-section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#dashboard-reports .report-section h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#dashboard-reports .report-section p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#dashboard-reports .chart-container {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#dashboard-reports table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#dashboard-reports table th,
+#dashboard-reports table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#dashboard-reports table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* S3 Cost Estimator Form */
+#s3-cost-estimator {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#s3-cost-estimator h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#s3-cost-form .form-group {
+    margin-bottom: 20px;
+}
+
+#s3-cost-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#s3-cost-form input,
+#s3-cost-form select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#s3-cost-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#s3-cost-form button:hover {
+    background-color: #0056b3;
+}
+
+/* EC2 Cost Estimator Form */
+#ec2-cost-estimator {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#ec2-cost-estimator h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#ec2-cost-form .form-group {
+    margin-bottom: 20px;
+}
+
+#ec2-cost-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#ec2-cost-form input,
+#ec2-cost-form select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#ec2-cost-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+#costResult {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}

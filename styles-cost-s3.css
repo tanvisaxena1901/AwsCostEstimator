@@ -1,0 +1,142 @@
+/* General styles for the S3 cost estimator page */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-container {
+    background: linear-gradient(to bottom, #ff6bcb, #0d6efd); /* Pink to Blue gradient */
+    color: white;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu > li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.menu > li > a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px 20px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.menu > li > a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: 30px;
+}
+
+.submenu {
+    display: none;
+    background: linear-gradient(to bottom, #ff6bcb, #0d6efd); /* Pink to Blue gradient */
+    padding: 0;
+}
+
+.menu > li:hover .submenu {
+    display: block;
+}
+
+.submenu > li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.submenu > li > a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 12px 30px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.submenu > li > a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: 40px;
+}
+
+main {
+    margin-left: 270px; /* Adjust according to menu width */
+    padding: 20px;
+}
+
+/* Styles specific to the S3 cost estimator section */
+#s3-cost-estimator {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+#s3-cost-estimator h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+#s3-cost-form .form-group {
+    margin-bottom: 20px;
+}
+
+#s3-cost-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+#s3-cost-form input,
+#s3-cost-form select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#s3-cost-form button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#s3-cost-form button:hover {
+    background-color: #0056b3;
+}
+
+#costResult {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC2 Cost Estimator - PreDeployCostGuard</title>
+    <link rel="stylesheet" href="styles-cost-ec2.css">
+</head>
+<body>
+<nav class="menu-container">
+    <ul class="menu">
+        <li>
+            <a href="#">Dashboard</a>
+            <ul class="submenu">
+                <li><a href="dashboard-overview.html">Dashboard Overview</a></li>
+                <li><a href="dashboard-reports.html">Reports</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Cost Estimator</a>
+            <ul class="submenu">
+                <li><a href="cost-ec2.html">EC2 Instances</a></li>
+                <li><a href="cost-s3.html">S3 Storage</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<main>
+    <section id="ec2-cost-estimator">
+        <h2>EC2 Cost Estimator</h2>
+        <form id="ec2-cost-form">
+            <div class="form-group">
+                <label for="instanceType">Instance Type:</label>
+                <select id="instanceType" name="instanceType" required>
+                    <option value="t2.micro">t2.micro</option>
+                    <option value="t2.small">t2.small</option>
+                    <option value="m5.large">m5.large</option>
+                    <!-- Add more instance types as needed -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="region">Region:</label>
+                <select id="region" name="region" required>
+                    <option value="us-east-1">US East (N. Virginia)</option>
+                    <option value="us-west-1">US West (N. California)</option>
+                    <option value="eu-west-1">EU (Ireland)</option>
+                    <!-- Add more regions as needed -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="usageHours">Usage Hours per Month:</label>
+                <input type="number" id="usageHours" name="usageHours" min="0" step="1" required>
+            </div>
+            <button type="button" onclick="calculateEC2Cost()">Estimate Cost</button>
+        </form>
+        <div id="costResult" class="result">
+            <!-- Cost result will be displayed here -->
+        </div>
+    </section>
+</main>
+
+<script src="cost-ec2.js"></script>
+</body>
+</html>

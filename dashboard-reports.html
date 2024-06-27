@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Reports - PreDeployCostGuard</title>
+    <link rel="stylesheet" href="styles-dashboard.css">
+    <!-- Include any additional CSS files as needed -->
+</head>
+<body>
+<nav class="menu-container">
+    <ul class="menu">
+        <li>
+            <a href="#">Dashboard</a>
+            <ul class="submenu">
+                <li><a href="dashboard-overview.html">Dashboard Overview</a></li>
+                <li><a href="dashboard-reports.html">Reports</a></li>
+                <!-- Add more submenu items for Dashboard as needed -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">Cost Estimator</a>
+            <ul class="submenu">
+                <li><a href="cost-ec2.html">EC2 Instances</a></li>
+                <li><a href="cost-s3.html">S3 Storage</a></li>
+                <!-- Add more submenu items for Cost Estimator as needed -->
+            </ul>
+        </li>
+        <!-- Add more main menu items as needed -->
+    </ul>
+</nav>
+
+<main>
+    <section id="dashboard-reports">
+        <h2>Dashboard Reports</h2>
+        <div class="report-section">
+            <h3>Monthly Cost Breakdown</h3>
+            <div class="chart-container">
+                <canvas id="monthlyCostChart" width="400" height="200"></canvas>
+            </div>
+            <p>Detailed breakdown of costs per month.</p>
+        </div>
+
+        <div class="report-section">
+            <h3>Usage Trends</h3>
+            <div class="chart-container">
+                <canvas id="usageTrendsChart" width="400" height="200"></canvas>
+            </div>
+            <p>Graphical representation of usage trends over time.</p>
+        </div>
+
+        <div class="report-section">
+            <h3>Resource Allocation</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Resource Type</th>
+                    <th>Allocated</th>
+                    <th>Used</th>
+                    <th>Remaining</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>EC2 Instances</td>
+                    <td>10</td>
+                    <td>8</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>S3 Storage</td>
+                    <td>100 GB</td>
+                    <td>60 GB</td>
+                    <td>40 GB</td>
+                </tr>
+                <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+            <p>Current allocation and usage of resources.</p>
+        </div>
+    </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script> <!-- Include your JavaScript file for interactive elements -->
+</body>
+</html>

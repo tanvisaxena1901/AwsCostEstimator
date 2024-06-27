@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S3 Cost Estimator - PreDeployCostGuard</title>
+    <link rel="stylesheet" href="styles-cost-s3.css">
+    <!-- Include additional CSS files as needed -->
+</head>
+<body>
+<nav class="menu-container">
+    <ul class="menu">
+        <li>
+            <a href="#">Dashboard</a>
+            <ul class="submenu">
+                <li><a href="dashboard-overview.html">Dashboard Overview</a></li>
+                <li><a href="dashboard-reports.html">Reports</a></li>
+                <!-- Add more submenu items for Dashboard as needed -->
+            </ul>
+        </li>
+        <li>
+            <a href="#">Cost Estimator</a>
+            <ul class="submenu">
+                <li><a href="cost-ec2.html">EC2 Instances</a></li>
+                <li><a href="cost-s3.html">S3 Storage</a></li>
+                <!-- Add more submenu items for Cost Estimator as needed -->
+            </ul>
+        </li>
+        <!-- Add more main menu items as needed -->
+    </ul>
+</nav>
+
+<main>
+    <section id="s3-cost-estimator">
+        <h2>S3 Cost Estimator</h2>
+        <form id="s3-cost-form">
+            <div class="form-group">
+                <label for="storageAmount">Storage Amount (GB):</label>
+                <input type="number" id="storageAmount" name="storageAmount" min="0" step="1" required>
+            </div>
+            <div class="form-group">
+                <label for="accessFrequency">Access Frequency:</label>
+                <select id="accessFrequency" name="accessFrequency" required>
+                    <option value="frequent">Frequent</option>
+                    <option value="infrequent">Infrequent</option>
+                    <option value="archive">Archive</option>
+                </select>
+            </div>
+            <button type="button" onclick="calculateS3Cost()">Estimate Cost</button>
+        </form>
+        <div id="costResult" class="result">
+            <!-- Cost result will be displayed here -->
+        </div>
+    </section>
+</main>
+
+<script src="cost-s3.js"></script> <!-- Include your JavaScript file for S3 cost estimation -->
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Budget Estimator - Web Application</title>
+    <link rel="stylesheet" href="styles-dashboard.css">
+    <link rel="stylesheet" href="styles-budget-estimator.css">
+</head>
+<body>
+<nav class="menu-container">
+    <ul class="menu">
+        <li>
+            <a href="#">Dashboard</a>
+            <ul class="submenu">
+                <li><a href="dashboard-overview.html">Dashboard Overview</a></li>
+                <li><a href="dashboard-reports.html">Reports</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Cost Estimator</a>
+            <ul class="submenu">
+                <li><a href="cost-ec2.html">EC2 Instances</a></li>
+                <li><a href="cost-s3.html">S3 Storage</a></li>
+            </ul>
+        </li>
+        <li><a href="BudgetEstimator.html">Budget Estimator</a></li>
+    </ul>
+</nav>
+
+<main class="dashboard">
+    <header>
+        <h1>AWS Budget Estimator</h1>
+    </header>
+    <section class="content">
+        <form id="budgetEstimatorForm">
+            <div class="step" id="step1">
+                <h2>Step 1: Select Application Type</h2>
+                <label>
+                    Select the type of application:
+                    <select id="applicationType" name="applicationType" onchange="showQuestions()">
+                        <option value="">Select...</option>
+                        <option value="web">Web Application</option>
+                        <option value="mobile">Mobile Application</option>
+                        <option value="backend">Backend Services</option>
+                    </select>
+                </label>
+            </div>
+
+            <div id="selectedApplicationType" style="display:none;"></div>
+            <div class="stepWeb">
+            <div class="stepWeb" id="computeQuestions" style="display:none;">
+                <h2>Compute Resources</h2>
+                <label>
+                    Number of instances needed:
+                    <input type="number" id="numInstances" name="instances" min="1" required>
+                </label>
+                <label>
+                    Instance type preference:
+                    <select id="instanceType" name="instanceType">
+                        <option value="t2.micro">t2.micro</option>
+                        <option value="t3.medium">t3.medium</option>
+                        <option value="m5.large">m5.large</option>
+                        <!-- Add more instance types as needed -->
+                    </select>
+                </label>
+                <label>
+                    Enable auto-scaling based on traffic:
+                    <input type="checkbox" id="autoScaling" name="autoScaling">
+                </label>
+            </div>
+
+            <div class="step" id="storageQuestions" style="display:none;">
+                <h2>Storage Requirements</h2>
+                <label>
+                    Estimated storage needed (GB):
+                    <input type="number" id="storage" name="storage" min="1" required>
+                </label>
+                <label>
+                    Database type preference:
+                    <select id="databaseType" name="databaseType">
+                        <option value="MySQL">MySQL</option>
+                        <option value="DynamoDB">DynamoDB</option>
+                        <option value="Amazon RDS">Amazon RDS</option>
+                        <!-- Add more database options as needed -->
+                    </select>
+                </label>
+            </div>
+            </div>
+            <!-- Add more sections for Mobile Application and Backend Services as needed -->
+            <!-- Mobile Application-specific questions -->
+            <div class="stepMob">
+            <section id="mobileQuestions" class="step">
+                <h2>Mobile Application Questions</h2>
+
+                <div class="question">
+                    <label for="numberOfUsers">Estimated Number of Users:</label>
+                    <input type="number" id="numberOfUsers" name="numberOfUsers" min="1" required>
+                </div>
+
+                <div class="question">
+                    <label for="monthlyDataTransfer">Monthly Data Transfer (GB):</label>
+                    <input type="number" id="monthlyDataTransfer" name="monthlyDataTransfer" min="1" required>
+                </div>
+
+                <div class="question">
+                    <label for="pushNotifications">Use of Push Notifications:</label>
+                    <select id="pushNotifications" name="pushNotifications">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <div class="question">
+                    <label for="platform">Platform:</label>
+                    <select id="platform" name="platform">
+                        <option value="iOS">iOS</option>
+                        <option value="Android">Android</option>
+                        <option value="React Native">React Native</option>
+                        <option value="Flutter">Flutter</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+            </section>
+            </div>
+
+
+            <button type="button" onclick="calculateEstimate()">Calculate Estimate</button>
+        </form>
+
+        <div id="budgetSummary" style="display:none;">
+            <h2>Budget Estimate Summary</h2>
+            <p id="summaryText"></p>
+        </div>
+    </section>
+</main>
+
+<script src="script-budget-estimator.js"></script>
+</body>
+</html>
