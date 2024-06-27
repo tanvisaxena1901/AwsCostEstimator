@@ -1,6 +1,30 @@
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelector("#applicationType").addEventListener("change", showQuestions);
+    document.querySelectorAll('input[name="awsComponents"]').forEach(componentCheckbox => {
+        componentCheckbox.addEventListener("change", showComponentQuestions);
+    });
 });
+
+const awsComponentPricing = {
+    "rds": {
+            "instanceType": {
+                "name": "db.m5.large(2 vcpus, 8gib)",
+                "price": 67.68
+            },
+            "databaseengine": {
+                "name": "oracle",
+                "price": 0
+            }
+    },
+    "ecs": {
+        "instancename": "ECS",
+        "price": 22
+    },
+    "s3": {
+        "instancename": "S3",
+        "price": 100
+    }
+};
 
 function showQuestions() {
     const applicationType = document.querySelector("#applicationType").value;
@@ -26,6 +50,9 @@ function showComponentQuestions() {
     if (document.querySelector("#componentS3").checked) {
         document.querySelector("#s3Questions").style.display = 'block';
     }
+    if (document.querySelector("#componentRDS").checked) {
+        document.querySelector("#rdsQuestions").style.display = 'block';
+    }
     // Add more conditions for other components
 }
 
@@ -46,6 +73,12 @@ function calculateEstimate() {
             const s3AccessFrequency = document.querySelector("#s3AccessFrequency").value;
             estimate += s3StorageAmount * (s3AccessFrequency === "frequent" ? 0.023 : 0.0125); // Example calculation
             summaryText += `S3 Storage: ${s3StorageAmount} GB, Access Frequency: ${s3AccessFrequency}\n`;
+        }
+        if (document.querySelector("#componentRDS").checked) {
+            const rdsInstanceName = awsComponentPricing["rds"]["instanceType"].name;
+            const rdsPrice = awsComponentPricing["rds"]["instanceType"].price;
+            estimate += rdsPrice; // Adding RDS price to the estimate
+            summaryText += `RDS Instance: ${rdsInstanceName}, Price: $${rdsPrice}\n`;
         }
         // Add more calculations for other components
     } else if (applicationType === "mobile") {
