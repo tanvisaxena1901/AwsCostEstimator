@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWS Budget Estimator - Web Application</title>
+    <title>AWS Budget Estimator</title>
     <link rel="stylesheet" href="styles-dashboard.css">
     <link rel="stylesheet" href="styles-budget-estimator.css">
+    <script src="script-budget-estimator.js" defer></script>
 </head>
 <body>
 <nav class="menu-container">
@@ -48,61 +49,74 @@
             </div>
 
             <div id="selectedApplicationType" style="display:none;"></div>
-            <div class="stepWeb">
-            <div class="stepWeb" id="computeQuestions" style="display:none;">
-                <h2>Compute Resources</h2>
-                <label>
-                    Number of instances needed:
-                    <input type="number" id="numInstances" name="instances" min="1" required>
-                </label>
-                <label>
-                    Instance type preference:
-                    <select id="instanceType" name="instanceType">
-                        <option value="t2.micro">t2.micro</option>
-                        <option value="t3.medium">t3.medium</option>
-                        <option value="m5.large">m5.large</option>
-                        <!-- Add more instance types as needed -->
-                    </select>
-                </label>
-                <label>
-                    Enable auto-scaling based on traffic:
-                    <input type="checkbox" id="autoScaling" name="autoScaling">
-                </label>
+
+            <!-- AWS Component Selection -->
+            <div id="componentSelection" class="step" style="display:none;">
+                <h2>Select AWS Components</h2>
+                <div class="question">
+                    <label>AWS Components:</label>
+                    <div>
+                        <input type="checkbox" id="componentEC2" name="awsComponents" value="ec2" onclick="showComponentQuestions()">
+                        <label for="componentEC2">EC2</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="componentS3" name="awsComponents" value="s3" onclick="showComponentQuestions()">
+                        <label for="componentS3">S3</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="componentRDS" name="awsComponents" value="rds" onclick="showComponentQuestions()">
+                        <label for="componentRDS">RDS</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="componentLambda" name="awsComponents" value="lambda" onclick="showComponentQuestions()">
+                        <label for="componentLambda">Lambda</label>
+                    </div>
+                    <!-- Add more components as needed -->
+                </div>
             </div>
 
-            <div class="step" id="storageQuestions" style="display:none;">
-                <h2>Storage Requirements</h2>
-                <label>
-                    Estimated storage needed (GB):
-                    <input type="number" id="storage" name="storage" min="1" required>
-                </label>
-                <label>
-                    Database type preference:
-                    <select id="databaseType" name="databaseType">
-                        <option value="MySQL">MySQL</option>
-                        <option value="DynamoDB">DynamoDB</option>
-                        <option value="Amazon RDS">Amazon RDS</option>
-                        <!-- Add more database options as needed -->
-                    </select>
-                </label>
-            </div>
+            <!-- AWS Component Specific Questions -->
+            <div id="componentQuestions" class="step" style="display:none;">
+                <h2>Component Specific Questions</h2>
+                <!-- EC2 Questions -->
+                <div id="ec2Questions" class="component-question" style="display:none;">
+                    <div class="question">
+                        <label for="ec2InstanceType">EC2 Instance Type:</label>
+                        <input type="text" id="ec2InstanceType" name="ec2InstanceType" required>
+                    </div>
+                    <div class="question">
+                        <label for="ec2InstanceCount">Number of Instances:</label>
+                        <input type="number" id="ec2InstanceCount" name="ec2InstanceCount" min="1" required>
+                    </div>
+                </div>
+                <!-- S3 Questions -->
+                <div id="s3Questions" class="component-question" style="display:none;">
+                    <div class="question">
+                        <label for="s3StorageAmount">Amount of Storage (GB):</label>
+                        <input type="number" id="s3StorageAmount" name="s3StorageAmount" min="1" required>
+                    </div>
+                    <div class="question">
+                        <label for="s3AccessFrequency">Access Frequency:</label>
+                        <select id="s3AccessFrequency" name="s3AccessFrequency">
+                            <option value="frequent">Frequent</option>
+                            <option value="infrequent">Infrequent</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Add more component specific questions as needed -->
             </div>
             <!-- Add more sections for Mobile Application and Backend Services as needed -->
             <!-- Mobile Application-specific questions -->
-            <div class="stepMob">
-            <section id="mobileQuestions" class="step">
+            <div id="mobileQuestions" class="step" style="display:none;">
                 <h2>Mobile Application Questions</h2>
-
                 <div class="question">
                     <label for="numberOfUsers">Estimated Number of Users:</label>
                     <input type="number" id="numberOfUsers" name="numberOfUsers" min="1" required>
                 </div>
-
                 <div class="question">
                     <label for="monthlyDataTransfer">Monthly Data Transfer (GB):</label>
                     <input type="number" id="monthlyDataTransfer" name="monthlyDataTransfer" min="1" required>
                 </div>
-
                 <div class="question">
                     <label for="pushNotifications">Use of Push Notifications:</label>
                     <select id="pushNotifications" name="pushNotifications">
@@ -110,7 +124,6 @@
                         <option value="no">No</option>
                     </select>
                 </div>
-
                 <div class="question">
                     <label for="platform">Platform:</label>
                     <select id="platform" name="platform">
@@ -118,12 +131,9 @@
                         <option value="Android">Android</option>
                         <option value="React Native">React Native</option>
                         <option value="Flutter">Flutter</option>
-                        <!-- Add more options as needed -->
                     </select>
                 </div>
-            </section>
             </div>
-
 
             <button type="button" onclick="calculateEstimate()">Calculate Estimate</button>
         </form>
@@ -135,6 +145,5 @@
     </section>
 </main>
 
-<script src="script-budget-estimator.js"></script>
 </body>
 </html>
